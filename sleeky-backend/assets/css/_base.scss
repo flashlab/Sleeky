@@ -274,32 +274,6 @@ select:hover {
 // Start Index page
 //
 .index {
-  #add-url {
-    width: 200px;
-  }
-
-  #new_url_form {
-    box-sizing: border-box;
-    overflow: hidden;
-    // min-width: 900px;
-  }
-
-  #new_url {
-    border: none;
-    background: $default;
-    text-align: left;
-
-    input.button {
-      margin-top: 10px !important;
-    }
-
-    div {
-      background: $default;
-      padding: 4px;
-      padding-top: 0px;
-    }
-  }
-
   .create {
     background: $accent !important;
     width: 150px;
@@ -382,120 +356,150 @@ select:hover {
       padding: 12px;
     }
   }
+}
 
-  // Table stuff
-  table.tblSorter {
-    background-color: $default;
+// End index page
+
+//
+// FROM index to Global
+//
+#add-url {
+  width: 200px;
+}
+
+#new_url_form {
+  box-sizing: border-box;
+  overflow: hidden;
+  // min-width: 900px;
+}
+
+#new_url {
+  border: none;
+  background: $default;
+  text-align: left;
+
+  input.button {
+    margin-top: 10px !important;
+  }
+
+  div {
+    background: $default;
+    padding: 4px;
+    padding-top: 0px;
+  }
+}
+
+// Table stuff
+table.tblSorter {
+  background-color: $default;
+  color: $text;
+
+  a {
     color: $text;
+  }
 
-    a {
-      color: $text;
-    }
+  small a {
+    color: darken(white, 50%)
+  }
 
-    small a {
-      color: darken(white, 50%)
-    }
+  thead tr .tablesorter-header {
+    padding: 10px;
+  }
 
-    thead tr .tablesorter-header {
-      padding: 10px;
-    }
+  tfoot tr {
+    background-color: $default;
+  }
 
-    tfoot tr {
-      background-color: $default;
-    }
+  thead tr th,
+  tfoot tr th,
+  th.header {
+    background-color: transparent;
+    border: none;
+    /* font-size: 8pt; */
+    padding: 4px;
+  }
 
-    thead tr th,
-    tfoot tr th,
-    th.header {
-      background-color: transparent;
-      border: none;
-      /* font-size: 8pt; */
-      padding: 4px;
-    }
+  thead tr .tablesorter-headerAsc,
+  thead tr .tablesorter-headerDesc {
+    background-color: $lightest !important;
+  }
 
-    thead tr .tablesorter-headerAsc,
-    thead tr .tablesorter-headerDesc {
-      background-color: $lightest !important;
-    }
+  tbody td {
+    color: $text;
+    padding: 5px;
+    background-color: $light;
+    vertical-align: middle;
+    transition: 0.4s all;
+  }
 
-    tbody td {
-      color: $text;
-      padding: 5px;
-      background-color: $light;
-      vertical-align: middle;
-      transition: 0.4s all;
-    }
+  tbody tr:hover td {
+    background-color: $lightest !important;
+  }
 
-    tbody tr:hover td {
-      background-color: $lightest !important;
-    }
+  tbody tr.normal-row td {
+    background: $light;
+  }
 
-    tbody tr.normal-row td {
+  .keyword {
+    border-left: 7px solid $accent;
+  }
+
+  input.text {
+    padding: 5px;
+    margin: 8px 5px !important;
+  }
+
+  .navigation .nav_link a {
       background: $light;
-    }
+      border: none;
 
-    .keyword {
-      border-left: 7px solid $accent;
-    }
+      &:hover {
+        background: $lightest;
+      }
+  }
 
-    input.text {
-      padding: 5px;
-      margin: 8px 5px !important;
-    }
+  tr.edit-row td {
+    background: $default !important;
+  }
 
-    .navigation .nav_link a {
-        background: $light;
+  // Icons
+  $icons-list: stats, share, edit, delete;
+  @each $icon in $icons-list {
+    @if $icon == delete {
+      td.actions .button_#{$icon} { 
+        background: red url(../img/#{$icon}.png) 0px center no-repeat;
+        background-size: 23px;
+        background-position: center;
         border: none;
+        padding: 3px;
+        border-radius: 2px;
 
-        &:hover {
-          background: $lightest;
-        }
-    }
-
-    tr.edit-row td {
-      background: $default !important;
-    }
-
-    // Icons
-    $icons-list: stats, share, edit, delete;
-    @each $icon in $icons-list {
-      @if $icon == delete {
-        td.actions .button_#{$icon} { 
-          background: red url(../img/#{$icon}.png) 0px center no-repeat;
+        &:hover { 
+          background: darken(red, 10%) url(../img/#{$icon}.png) 0px center no-repeat;
           background-size: 23px;
           background-position: center;
-          border: none;
-          padding: 3px;
-          border-radius: 2px;
-
-          &:hover { 
-            background: darken(red, 10%) url(../img/#{$icon}.png) 0px center no-repeat;
-            background-size: 23px;
-            background-position: center;
-          }
         }
-      } @else {
-        td.actions .button_#{$icon} { 
-          background: $accent url(../img/#{$icon}.png) 0px center no-repeat;
+      }
+    } @else {
+      td.actions .button_#{$icon} { 
+        background: $accent url(../img/#{$icon}.png) 0px center no-repeat;
+        background-size: 23px;
+        background-position: center;
+        border: none;
+        padding: 3px;
+        border-radius: 2px;
+
+        &:hover { 
+          background: darken($accent, 10%) url(../img/#{$icon}.png) 0px center no-repeat;
           background-size: 23px;
           background-position: center;
-          border: none;
-          padding: 3px;
-          border-radius: 2px;
-
-          &:hover { 
-            background: darken($accent, 10%) url(../img/#{$icon}.png) 0px center no-repeat;
-            background-size: 23px;
-            background-position: center;
-          }
         }
       }
     }
   }
 }
 
-// End index page
-
+// End Global
 
 // 
 // Nav
@@ -717,6 +721,7 @@ div.share {
 .plugins main,
 .plugin_page_sleeky_settings main,
 code {
+  display: inline-block;
   background: $default;
   padding: 10px;
   padding: 5px 25px;
@@ -907,17 +912,17 @@ body > div > pre {
         width: 100%;
       }
     }
-    
-    table.tblSorter {
-      min-width: 600px;
+  }
 
-      // Icons
-      $icons-list: stats, share, edit, delete;
-      @each $icon in $icons-list {
-        td.actions .button_#{$icon} { 
-          background-size: 15px;
-          margin: 3px;
-        }
+  table.tblSorter {
+    min-width: 600px;
+
+    // Icons
+    $icons-list: stats, share, edit, delete;
+    @each $icon in $icons-list {
+      td.actions .button_#{$icon} { 
+        background-size: 15px;
+        margin: 3px;
       }
     }
   }
